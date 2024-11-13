@@ -11,8 +11,8 @@ login = os.getenv('LOGIN')
 password = os.getenv('PASSWORD')
 name=os.getenv('NAME')
 
-letter = """From: konowalov4.d@yandex.ru
-To: dasha.kon.060203@gmail.com
+letter = """From: {}
+To: {}
 Subject: Приглашение
 Content-Type: text/plain; charset="UTF-8";
 
@@ -31,7 +31,7 @@ Content-Type: text/plain; charset="UTF-8";
 Все проекты — они же решение наших задачек — можно разместить на твоём GitHub. Работодатели такое оценят. 
 
 Регистрируйся  %website% 
-На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл."""
+На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.""".format(login, name)
 
 letter = letter.replace("%friend_name%"," Дорогой друг")
 letter = letter.replace("%my_name%","Гуру знаний")
@@ -39,7 +39,6 @@ letter = letter.replace("%website%" ,"https://dvmn.org/profession-ref-program/da
 
 letter = letter.encode("UTF-8")
 
-print( letter )
 
 server = smtplib.SMTP_SSL('smtp.yandex.ru:465')
 server.login (login , password)
